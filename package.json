@@ -23,7 +23,8 @@
     "license": "MIT",
     "dependencies": {
         "create-react-class": "^15.6.2",
-        "prop-types": "^15.6.0"
+        "prop-types": "^15.6.0",
+        "react": "^16.8.6"
     },
     "devDependencies": {
         "eslint": "^3.2.2"
