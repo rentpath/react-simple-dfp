@@ -1,7 +1,7 @@
 {
-    "name": "react-simple-dfp",
-    "version": "0.4.0",
-    "description": "A simple React component for DFP - DoubleClick for Publishers.",
+    "name": "@rentpath/react-simple-dfp",
+    "version": "1.0.0",
+    "description": "A simple React component for DFP - DoubleClick for Publishers based on @amobiz/react-simple-dfp.",
     "main": "lib/component.js",
     "scripts": {
         "lint": "eslint ."
@@ -18,7 +18,8 @@
     "author": "Amobiz",
     "contributors": [
         "ALi Li (https://github.com/esbb48)",
-        "Ufuk BAYIR (https://github.com/ufukbay)"
+        "Ufuk BAYIR (https://github.com/ufukbay)",
+        "RentPath"
     ],
     "license": "MIT",
     "dependencies": {
