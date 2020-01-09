@@ -17,3 +17,5 @@ logs
 
 # NPM
 .npmignore
+
+.github
