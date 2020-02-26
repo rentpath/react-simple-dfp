@@ -1,36 +1,37 @@
 {
-    "name": "@rentpath/react-simple-dfp",
-    "version": "1.0.0",
-    "description": "A simple React component for DFP - DoubleClick for Publishers based on @amobiz/react-simple-dfp.",
-    "main": "lib/component.js",
-    "scripts": {
-        "lint": "eslint ."
-    },
-    "keywords": [
-        "advertising",
-        "component",
-        "dfp",
-        "doubleclick",
-        "doubleclick for publishers",
-        "gpt",
-        "react"
-    ],
-    "author": "Amobiz",
-    "contributors": [
-        "ALi Li (https://github.com/esbb48)",
-        "Ufuk BAYIR (https://github.com/ufukbay)",
-        "RentPath"
-    ],
-    "license": "MIT",
-    "dependencies": {
-        "create-react-class": "^15.6.2",
-        "prop-types": "^15.6.0",
-        "react": "^16.8.6"
-    },
-    "devDependencies": {
-        "eslint": "^3.2.2"
-    },
-    "peerDependencies": {
-        "react": ">= 15.3.0"
-    }
+  "name": "@rentpath/react-simple-dfp",
+  "version": "1.2.0",
+  "description": "A simple React component for DFP - DoubleClick for Publishers based on @amobiz/react-simple-dfp.",
+  "main": "lib/component.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "types": "./lib/index.d.ts",
+  "keywords": [
+    "advertising",
+    "component",
+    "dfp",
+    "doubleclick",
+    "doubleclick for publishers",
+    "gpt",
+    "react"
+  ],
+  "author": "Amobiz",
+  "contributors": [
+    "ALi Li (https://github.com/esbb48)",
+    "Ufuk BAYIR (https://github.com/ufukbay)",
+    "RentPath"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "create-react-class": "^15.6.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "eslint": "^3.2.2"
+  },
+  "peerDependencies": {
+    "react": ">= 15.3.0"
+  }
 }
