@@ -96,6 +96,13 @@ open index.html
 
 [Issues](https://github.com/amobiz/react-simple-dfp/issues)
 
+## Releasing
+
+1. Inside the pull request, make sure the semantic version is bumped in `package.json`
+2. After merging the pull request, wait for the GitHub Actions [workflow](https://github.com/rentpath/google-event-tracking/actions) to publish the new package version [here](https://github.com/rentpath/google-event-tracking/packages).
+
+Note: Collaborators can also [draft a release](https://github.com/rentpath/google-event-tracking/releases/new) to set off the package publishing workflow.
+
 # Similar Projects
 
 * [dfp-events](https://github.com/mcountis/dfp-events)
