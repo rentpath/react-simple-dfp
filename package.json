@@ -1,6 +1,6 @@
 {
   "name": "@rentpath/react-simple-dfp",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A simple React component for DFP - DoubleClick for Publishers based on @amobiz/react-simple-dfp.",
   "main": "lib/component.js",
   "scripts": {
