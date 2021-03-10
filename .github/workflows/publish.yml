@@ -26,6 +26,8 @@ jobs:
       # - name: build
       #   run: yarn build
       - name: publish
-        run: npm publish
+        run: |
+          npm config set loglevel verbose --global
+          npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
