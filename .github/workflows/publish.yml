@@ -12,7 +12,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com/'
+          registry-url: 'https://npm.pkg.github.com'
           scope: '@rentpath'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
@@ -31,7 +31,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
       - name: publish
         run: |
-          npm config set loglevel verbose --global
-          npm publish --verbose
+          yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
