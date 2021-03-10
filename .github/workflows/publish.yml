@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@rentpath'
+          scope: '@rentpath/react-simple-dfp'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
       - name: install dependencies
@@ -30,7 +30,6 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
       - name: publish
-        run: |
-          yarn publish
+        run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_RENTPATH_PLATENG_GPR_PUSH_TOKEN }}
