@@ -6,26 +6,31 @@ jobs:
   publish:
     runs-on: 'ubuntu-latest'
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: ${{ github.event.client_payload.ref }}
-    - uses: actions/setup-node@v2
-      with:
-        node-version: '12.x'
-        registry-url: 'https://npm.pkg.github.com/'
-        scope: '@rentpath'
-    - name: install dependencies
-      run: |
-        yarn config set @rentpath:registry https://npm.pkg.github.com
-        yarn install --ignore-scripts
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_GPR_TOKEN }}
-    - name: safely run post-install scripts
-      run: npm rebuild && npm run prepare --if-present
-    # might be useful in the future
-    # - name: build
-    #   run: yarn build
-    - name: publish
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GH_GPR_TOKEN }}
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.client_payload.ref }}
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12.x'
+          registry-url: 'https://npm.pkg.github.com/'
+          scope: '@rentpath'
+
+      - name: install dependencies
+        run: |
+          yarn config set @rentpath:registry https://npm.pkg.github.com
+          yarn install --ignore-scripts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_GPR_TOKEN }}
+
+      - name: safely run post-install scripts
+        run: npm rebuild && npm run prepare --if-present
+
+      # might be useful in the future
+      # - name: build
+      #   run: yarn build
+
+      - name: publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GPR_PUBLIC_TOKEN }}
