@@ -47,4 +47,4 @@ jobs:
       - name: publish
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ steps.rossum.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ github.token }}
