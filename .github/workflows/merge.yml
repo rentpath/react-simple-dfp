@@ -2,11 +2,25 @@ name: Merging
 on:
   pull_request:
     types: [closed]
+  workflow_dispatch:
 jobs:
   merged:
-    if: github.event.pull_request.merged == true
+    if: ${{ github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch' }}
     runs-on: 'ubuntu-latest'
     steps:
+      # - name: get rossum app token
+      #   id: rossum
+      #   uses: getsentry/action-github-app-token@v1
+      #   with:
+      #     app_id: ${{ secrets.APP_ID }}
+      #     private_key: ${{ secrets.ROSSUM_PRIVATE_KEY }}
+
+      - name: Check out repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          # token: ${{ steps.rossum.outputs.token }}
+
       - name: trigger build
         run: |
           curl --request POST \
