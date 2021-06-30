@@ -34,5 +34,9 @@
   "peerDependencies": {
     "react": ">= 15.3.0"
   },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/",
+    "scope": "@rentpath"
+  }
 }
