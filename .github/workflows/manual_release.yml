@@ -7,10 +7,23 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(github.event.release.author.login, 'rentpath-jenkins') == false && contains(github.event.release.author.login, 'rentpath-semantic-release') == false
     steps:
+      - name: get rossum app token
+        id: rossum
+        uses: getsentry/action-github-app-token@v1
+        with:
+          app_id: ${{ secrets.ROSSUM_APP_ID }}
+          private_key: ${{ secrets.ROSSUM_PRIVATE_KEY }}
+
+      - name: Check out repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
+          token: ${{ steps.rossum.outputs.token }}
+
       - name: trigger build
         run: |
           curl --request POST \
                --header "Accept: application/vnd.github.everest-preview+json" \
-               --header "Authorization: Bearer ${{ secrets.GH_REPO_DISPATCH_RENTPATH_BOT }}" \
-               --url https://api.github.com/repos/${{ github.repository }}/dispatches \
+               --header "Authorization: Bearer ${{ steps.rossum.outputs.token }}" \
+               --url "https://api.github.com/repos/${{ github.repository }}/dispatches" \
                --data-binary '{"event_type":"semantic-release","client_payload":{"ref":"${{ github.ref }}","sha":"${{ github.sha }}"}}'
