@@ -9,33 +9,27 @@ on:
         required: true
 jobs:
   publish:
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-latest
     steps:
-      - name: get rossum app token
-        id: rossum
-        uses: getsentry/action-github-app-token@v1
-        with:
-          app_id: ${{ secrets.ROSSUM_APP_ID }}
-          private_key: ${{ secrets.ROSSUM_PRIVATE_KEY }}
-
       - name: check out most recent commit
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.inputs.ref || github.event.client_payload.ref }}
-          token: ${{ steps.rossum.outputs.token }}
+          token: ${{ github.token }}
 
-      - uses: actions/setup-node@v2
+      - name: set up node
+        uses: actions/setup-node@v2
         with:
-          node-version: '12.x'
-          registry-url: 'https://npm.pkg.github.com/'
+          node-version: 12.x
+          registry-url: https://registry.npmjs.org
           scope: '@rentpath'
 
       - name: install dependencies
         run: |
-          yarn config set @rentpath:registry https://npm.pkg.github.com
+          yarn config set @rentpath:registry https://registry.npmjs.org
           yarn install --ignore-scripts
         env:
-          NODE_AUTH_TOKEN: ${{ steps.rossum.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ github.token }}
 
       - name: safely run post-install scripts
         run: npm rebuild && npm run prepare --if-present
@@ -45,6 +39,6 @@ jobs:
       #   run: yarn build
 
       - name: publish
-        run: npm publish
+        run: npm publish --access=public
         env:
-          NODE_AUTH_TOKEN: ${{ steps.rossum.outputs.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_CUBBY_TOKEN }}
